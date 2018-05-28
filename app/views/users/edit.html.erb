@@ -22,11 +22,17 @@
 <% end %>
 -->
 
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |error| %>
+    <%= error %><br/>
+  <% end %>
+<% end %>
+<br/>
 <%= form_for @user do |f| %>
   <%= f.label :username, "Your Username" %>
   <%= f.text_field :username %><br/>
   <%= f.label :email %>
-  <%= f.text_field :email, value: "example@example.com" %><br/>
+  <%= f.text_field :email %><br/>
   <%= f.label :password %>
   <%= f.text_field :password %><br/>
   <%= f.submit "Submit" %>
